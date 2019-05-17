@@ -11,6 +11,8 @@ import { UserComponent } from './main/community/user/user.component';
 import { FaultReportComponent } from './support/fault-report/fault-report.component';
 import { FavoriteListComponent } from './main/community/favorite-list/favorite-list.component';
 import { FavoriteItemComponent } from './main/community/favorite-list/favorite-item/favorite-item.component';
+import { MedalsListComponent } from './main/community/medals-list/medals-list.component';
+import { MapComponent } from './main/map/map.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { FavoriteItemComponent } from './main/community/favorite-list/favorite-i
     UserComponent,
     FaultReportComponent,
     FavoriteListComponent,
-    FavoriteItemComponent
+    FavoriteItemComponent,
+    MedalsListComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
