@@ -3,10 +3,26 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MainComponent } from './main/main.component';
+import { ListComponent } from './main/list/list.component';
+import { ListItemComponent } from './main/list/list-item/list-item.component';
+import { CommunityComponent } from './main/community/community.component';
+import { UserComponent } from './main/community/user/user.component';
+import { FaultReportComponent } from './support/fault-report/fault-report.component';
+import { FavoriteListComponent } from './main/community/favorite-list/favorite-list.component';
+import { FavoriteItemComponent } from './main/community/favorite-list/favorite-item/favorite-item.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainComponent,
+    ListComponent,
+    ListItemComponent,
+    CommunityComponent,
+    UserComponent,
+    FaultReportComponent,
+    FavoriteListComponent,
+    FavoriteItemComponent
   ],
   imports: [
     BrowserModule,
