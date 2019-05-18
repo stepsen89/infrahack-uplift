@@ -56,7 +56,7 @@ export class MapComponent {
       } else {
         s_color = 'green';
       }
-			const obj = circle([ element.lat, element.lng ], { radius: 750, color: s_color});
+			const obj = circle([ element.lat, element.lng ], { radius: 500, color: s_color});
 			obj.bindPopup('<b>' + element.name + '</b><br>' + element.working_lifts + ' out of ' + element.total_lifts + ' lifts are working');
 
 			array.push(
