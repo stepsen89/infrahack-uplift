@@ -17,6 +17,7 @@ import { FavoriteItemComponent } from './main/community/favorite-list/favorite-i
 import { MedalsListComponent } from './main/community/medals-list/medals-list.component';
 import { MapComponent } from './main/map/map.component';
 import { HeaderComponent } from './header/header.component';
+import { LocationsService } from './locations.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import { HeaderComponent } from './header/header.component';
     AppRoutingModule,
     LeafletModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    LocationsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
