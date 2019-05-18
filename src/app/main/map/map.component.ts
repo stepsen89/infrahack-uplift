@@ -30,37 +30,40 @@ export class MapComponent {
 		layer: circle([ 46.95, -122 ], { radius: 5000 })
 	};
 
-	layersControl: any;
-	// Values to bind to Leaflet Directive
-	layers: Layer[];
+layersControl: any;
+// Values to bind to Leaflet Directive
+layers: Layer[];
 
-	options = {
-		zoom: 11,
-		center: latLng(51.5074, 0.1278)
-	};
+options = {
+  zoom: 11,
+  center: latLng(51.5074, 0.1278)
+};
 
-	constructor(private locationsService: LocationsService) {
+constructor(private locationsService: LocationsService) {
+  this.apply();
+}
 
+apply() {
+  const array = [];
 
-		this.apply();
-	}
+  this.locations = this.locationsService.getLocations();
 
-	apply() {
-		const array = [];
-
-		this.locations = this.locationsService.getLocations();
-		this.locations.forEach(element => {
-		  let s_color;
-		  if (element.faulty_lifts > 0) {
-		    s_color = 'red';
+  this.locations.forEach(element => {
+    let s_color;
+    if (element.faulty_lifts > 0) {
+    s_color = 'red';
       } else {
         s_color = 'green';
       }
-			const obj = circle([ element.lat, element.lng ], { radius: 500, color: s_color});
-			obj.bindPopup('<b>' + element.name + '</b><br>' + element.working_lifts + ' out of ' + element.total_lifts + ' lifts are working');
 
-			array.push(
-				{
+    let popup = '<b>' + element.name + '</b><br>' + element.working_lifts + ' out of ' + element.total_lifts + ' lifts are working';
+
+    console.log(element.incidents);
+
+  const obj = circle([ element.lat, element.lng ], { radius: 500, color: s_color});
+  obj.bindPopup(popup);
+
+  array.push({
 					id: 'circle',
 					name: 'Circle',
 					enabled: true,
