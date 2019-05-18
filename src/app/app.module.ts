@@ -13,6 +13,7 @@ import { FavoriteListComponent } from './main/community/favorite-list/favorite-l
 import { FavoriteItemComponent } from './main/community/favorite-list/favorite-item/favorite-item.component';
 import { MedalsListComponent } from './main/community/medals-list/medals-list.component';
 import { MapComponent } from './main/map/map.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MapComponent } from './main/map/map.component';
     FavoriteListComponent,
     FavoriteItemComponent,
     MedalsListComponent,
-    MapComponent
+    MapComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
