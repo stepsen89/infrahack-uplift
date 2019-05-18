@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'home',
     component: MainComponent,
     children: [{ 
-        path: 'stations',
+        path: 'list',
         component: ListComponent
       },
       { 
