@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { locationJSON } from '../assets/raw.js';
 import { HttpClient } from '@angular/common/http';
 
-const apiUrl = "http://192.168.8.100:8000/api/data";
+const apiUrl = "http://0.0.0.0:8000/api/all";
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +13,13 @@ export class LocationsService {
     private httpClient: HttpClient
   ) { }
 
-  public getLocations(url?: string){
-    console.log("jljl");
-    console.log(locationJSON);
-    // this.httpClient.get(`${apiUrl}`)
-    // .subscribe((res) => {console.log(res)})
-
+  public getLocations(url?: string) {
     return locationJSON;
-
-  }
-
-  getSingleLocationByName(){
-    return location;
+    this.httpClient.get(`${apiUrl}`)
+      .subscribe((res) => {
+        console.log(res);
+        return res;
+      });
   }
 }
 

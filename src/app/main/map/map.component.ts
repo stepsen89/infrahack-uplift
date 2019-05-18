@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core';
 // import * as L from '../../../../node_modules/leaflet';
 
 import { latLng, LatLng, tileLayer, Layer, marker, circle, polygon, icon, geoJSON,  } from 'leaflet';
@@ -10,25 +10,14 @@ import { LeafletLayersDemoModel } from './map.component.model';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent {  
-	locations: any;
-	model: any;
-
-	// Open Street Map and Open Cycle Map definitions
-	LAYER_OCM = {
-		id: 'opencyclemap',
-		name: 'Open Cycle Map',
-		enabled: true,
-		layer: tileLayer('http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', {
-			maxZoom: 18,
-			attribution: 'Open Cycle Map'
-		})
-	};
+export class MapComponent {
+  locations: any;
+  model: any;
 	LAYER_OSM = {
 		id: 'openstreetmap',
 		name: 'Open Street Map',
 		enabled: false,
-		layer: tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		layer: tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 			maxZoom: 18,
 			attribution: 'Open Street Map'
 		})
@@ -44,14 +33,14 @@ export class MapComponent {
 	layersControl: any;
 	// Values to bind to Leaflet Directive
 	layers: Layer[];
-	
+
 	options = {
 		zoom: 10,
 		center: latLng(46.879966, -121.726909)
 	};
 
 	constructor(private locationsService: LocationsService) {
-		
+
 
 		this.apply();
 	}
@@ -75,20 +64,19 @@ export class MapComponent {
 		});
 
 		this.model = new LeafletLayersDemoModel(
-			[ this.LAYER_OSM, this.LAYER_OCM ],
-			this.LAYER_OCM.id,
+			[ this.LAYER_OSM],
+			this.LAYER_OSM.id,
 			array
 			// [ this.circle ]
 		);
-		
+
 		this.layersControl = {
 			baseLayers: {
 				'Open Street Map': this.LAYER_OSM.layer,
-				'Open Cycle Map': this.LAYER_OCM.layer
 			},
 			overlays: {
 				Circle: this.circle.layer,
-			
+
 			}
 		};
 

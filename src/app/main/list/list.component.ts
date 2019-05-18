@@ -14,14 +14,14 @@ export class ListComponent implements OnInit {
     private locationsService: LocationsService
   ) { }
 
+
   ngOnInit() {
     this.getLocations();
     console.log(this.locations);
   }
 
-  getLocations(){
+  getLocations() {
     this.locations = this.locationsService.getLocations();
     console.log(this.locations);
-    console.log("ljl");
   }
 }
