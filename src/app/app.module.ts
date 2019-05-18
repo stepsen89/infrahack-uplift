@@ -20,6 +20,10 @@ import { MapComponent } from './main/map/map.component';
 import { HeaderComponent } from './header/header.component';
 import { LocationsService } from './locations.service';
 import { MedalComponent } from './main/community/medals-list/medal/medal.component';
+import { ReportingComponent } from './reporting/reporting.component';
+import { FormIncidenceComponent } from './reporting/form-incidence/form-incidence.component';
+import { FormInformationComponent } from './reporting/form-information/form-information.component';
+import { SplashscreenComponent } from './splashscreen/splashscreen.component';
 
 
 @NgModule({
@@ -36,7 +40,11 @@ import { MedalComponent } from './main/community/medals-list/medal/medal.compone
     MedalsListComponent,
     MapComponent,
     HeaderComponent,
-    MedalComponent
+    MedalComponent,
+    ReportingComponent,
+    FormIncidenceComponent,
+    FormInformationComponent,
+    SplashscreenComponent
   ],
   imports: [
     BrowserModule,
