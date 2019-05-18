@@ -1,33 +1,108 @@
 import { Component, OnInit } from '@angular/core'; 
-import * as L from 'leaflet';
+// import * as L from '../../../../node_modules/leaflet';
 
+import { latLng, LatLng, tileLayer, Layer, marker, circle, polygon, icon, geoJSON,  } from 'leaflet';
+import { LocationsService } from 'src/app/locations.service';
+import { LeafletLayersDemoModel } from './map.component.model';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit {  
-  constructor() { }
+export class MapComponent {  
+	locations: any;
+	model: any;
 
-  // mymap: any = L.map('mapid').setView([51.505, -0.09], 13);
-  // data: any;
-      
-      ngOnInit() {
-  //       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-  //         maxZoom: 18,
-  //         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-  //           '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-  //           'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  //       }).addTo(this.mymap);
+	// Open Street Map and Open Cycle Map definitions
+	LAYER_OCM = {
+		id: 'opencyclemap',
+		name: 'Open Cycle Map',
+		enabled: true,
+		layer: tileLayer('http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', {
+			maxZoom: 18,
+			attribution: 'Open Cycle Map'
+		})
+	};
+	LAYER_OSM = {
+		id: 'openstreetmap',
+		name: 'Open Street Map',
+		enabled: false,
+		layer: tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			maxZoom: 18,
+			attribution: 'Open Street Map'
+		})
+	};
 
-  //       this.data = "test";
-        
-  //       L.marker([51.5308818372572, -0.122925992140273]).addTo(this.mymap)
-  //           .bindPopup("This is a mockup :)")
-  //           .openPopup();
-      
-  //       console.log(this.data);
-  }
+	circle = {
+		id: 'circle',
+		name: 'Circle',
+		enabled: true,
+		layer: circle([ 46.95, -122 ], { radius: 5000 })
+	};
 
+	layersControl: any;
+	// Values to bind to Leaflet Directive
+	layers: Layer[];
+	
+	options = {
+		zoom: 10,
+		center: latLng(46.879966, -121.726909)
+	};
+
+	constructor(private locationsService: LocationsService) {
+		
+
+		this.apply();
+	}
+
+	apply() {
+		const array = [];
+
+		this.locations = this.locationsService.getLocations();
+		this.locations.forEach(element => {
+			console.log(element)
+			const obj = circle([ element.lat, element.lng ], { radius: 1000 })
+			obj.bindPopup('<br>' + element.name + '</b>' + element.working_lifts + " out of " + element.total_lifts +" lifts are working");
+
+			array.push(
+				{
+					id: 'circle',
+					name: 'Circle',
+					enabled: true,
+					layer: obj
+				});
+		});
+
+		this.model = new LeafletLayersDemoModel(
+			[ this.LAYER_OSM, this.LAYER_OCM ],
+			this.LAYER_OCM.id,
+			array
+			// [ this.circle ]
+		);
+		
+		this.layersControl = {
+			baseLayers: {
+				'Open Street Map': this.LAYER_OSM.layer,
+				'Open Cycle Map': this.LAYER_OCM.layer
+			},
+			overlays: {
+				Circle: this.circle.layer,
+			
+			}
+		};
+
+		// Get the active base layer
+		const baseLayer = this.model.baseLayers.find((l: any) => (l.id === this.model.baseLayer));
+
+		// Get all the active overlay layers
+		const newLayers = this.model.overlayLayers
+			.filter((l: any) => l.enabled)
+			.map((l: any) => l.layer);
+		newLayers.unshift(baseLayer.layer);
+
+		this.layers = newLayers;
+
+		return false;
+	}
 }

@@ -7,13 +7,14 @@
      [leafletOptions]="options">
 </div> -->
 
-<!-- <meta id="my-data" data-name='{{ data }}'>
+<!-- xx{{options.layers.tileLayer}}xx
+
+<meta id="my-data" data-name='{{ data }}'>
 
 <div id="mapid" style="width: 100%; height: 100%;"></div> -->
 
-<!-- <div leaflet style="height: 300px;"
+<div leaflet style="height: 300px;"
      [leafletOptions]="options"
-     [(leafletZoom)]="zoom"
-     [(leafletCenter)]="center"
-     [leafletFitBounds]="fitBounds">
-</div> -->
+     [leafletLayers]="layers"
+     [leafletLayersControl]="layersControl">
+</div>

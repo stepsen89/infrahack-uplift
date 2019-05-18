@@ -15,11 +15,13 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.locations = this.getLocations();
+    this.getLocations();
     console.log(this.locations);
   }
 
   getLocations(){
     this.locations = this.locationsService.getLocations();
+    console.log(this.locations);
+    console.log("ljl");
   }
 }

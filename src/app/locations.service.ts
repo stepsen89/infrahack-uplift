@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { locations } from '../assets/mock-locations';
+import { locationJSON } from '../assets/raw.js';
 import { HttpClient } from '@angular/common/http';
 
 const apiUrl = "http://192.168.8.100:8000/api/data";
@@ -14,10 +14,12 @@ export class LocationsService {
   ) { }
 
   public getLocations(url?: string){
-    console.log(apiUrl);
-    this.httpClient.get(`${apiUrl}`)
-    .subscribe((res) => {console.log(res)})
+    console.log("jljl");
+    console.log(locationJSON);
+    // this.httpClient.get(`${apiUrl}`)
+    // .subscribe((res) => {console.log(res)})
 
+    return locationJSON;
 
   }
 
