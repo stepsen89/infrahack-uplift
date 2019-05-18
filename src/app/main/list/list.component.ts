@@ -15,7 +15,7 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getLocations();
+    this.locations = this.getLocations();
     console.log(this.locations);
   }
 

@@ -1,18 +1,24 @@
 import { Injectable } from '@angular/core';
 import { locations } from '../assets/mock-locations';
+import { HttpClient } from '@angular/common/http';
 
-const env = "http://192.168.8.100:8000/api/data";
+const apiUrl = "http://192.168.8.100:8000/api/data";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocationsService {
 
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
-  getLocations(){
-    console.log(env);
-    return locations;
+  public getLocations(url?: string){
+    console.log(apiUrl);
+    this.httpClient.get(`${apiUrl}`)
+    .subscribe((res) => {console.log(res)})
+
+
   }
 
   getSingleLocationByName(){
