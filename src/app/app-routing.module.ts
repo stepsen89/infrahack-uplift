@@ -8,21 +8,27 @@ import { ListComponent } from './main/list/list.component';
 import { MapComponent } from './main/map/map.component';
 import { CommunityComponent } from './main/community/community.component';
 
+
+// main containing views for
+//  stations list
+//  map
+//  community
+
 const routes: Routes = [
   { path: 'home',
     component: MainComponent,
     children: [{ 
-      path: 'stations',
-      component: ListComponent
-    },
-    { 
-      path: 'map',
-      component: MapComponent
-    },
-    { 
-      path: 'community',
-      component: CommunityComponent
-    }],
+        path: 'stations',
+        component: ListComponent
+      },
+      { 
+        path: 'map',
+        component: MapComponent
+      },
+      { 
+        path: 'community',
+        component: CommunityComponent
+      }],
   },
 ];
 
