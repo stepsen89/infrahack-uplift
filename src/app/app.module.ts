@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +21,7 @@ import { MapComponent } from './main/map/map.component';
 import { HeaderComponent } from './header/header.component';
 import { LocationsService } from './locations.service';
 import { MedalComponent } from './main/community/medals-list/medal/medal.component';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { MedalComponent } from './main/community/medals-list/medal/medal.compone
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LeafletModule.forRoot()
+    LeafletModule.forRoot(),
+    HttpClientModule
   ],
   providers: [
     LocationsService
