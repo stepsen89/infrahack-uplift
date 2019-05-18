@@ -13,7 +13,7 @@ import { LeafletLayersDemoModel } from './map.component.model';
 export class MapComponent {
   locations: any;
   model: any;
-	LAYER_OSM = {
+  LAYER_OSM = {
 		id: 'openstreetmap',
 		name: 'Open Street Map',
 		enabled: false,
@@ -35,8 +35,8 @@ export class MapComponent {
 	layers: Layer[];
 
 	options = {
-		zoom: 10,
-		center: latLng(46.879966, -121.726909)
+		zoom: 11,
+		center: latLng(51.5074, 0.1278)
 	};
 
 	constructor(private locationsService: LocationsService) {
@@ -50,9 +50,14 @@ export class MapComponent {
 
 		this.locations = this.locationsService.getLocations();
 		this.locations.forEach(element => {
-			console.log(element)
-			const obj = circle([ element.lat, element.lng ], { radius: 1000 })
-			obj.bindPopup('<br>' + element.name + '</b>' + element.working_lifts + " out of " + element.total_lifts +" lifts are working");
+		  let s_color;
+		  if (element.faulty_lifts > 0) {
+		    s_color = 'red';
+      } else {
+        s_color = 'green';
+      }
+			const obj = circle([ element.lat, element.lng ], { radius: 750, color: s_color});
+			obj.bindPopup('<b>' + element.name + '</b><br>' + element.working_lifts + ' out of ' + element.total_lifts + ' lifts are working');
 
 			array.push(
 				{

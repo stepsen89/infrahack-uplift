@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { locationJSON } from '../assets/raw.js';
 import { HttpClient } from '@angular/common/http';
 
-const apiUrl = "http://0.0.0.0:8000/api/all";
+const apiUrl = "http://192.168.8.100:8000/api/all";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,6 @@ export class LocationsService {
     return locationJSON;
     this.httpClient.get(`${apiUrl}`)
       .subscribe((res) => {
-        console.log(res);
         return res;
       });
   }

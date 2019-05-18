@@ -17,11 +17,9 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.getLocations();
-    console.log(this.locations);
   }
 
   getLocations() {
     this.locations = this.locationsService.getLocations();
-    console.log(this.locations);
   }
 }
