@@ -7,3 +7,11 @@
   height: 87vh;
   background-color:#d9d2d229;
 }
+
+@media only screen and (min-width: 800px) {
+  .section-bottom {
+    height: 87vh;
+    background-color:#d9d2d229;
+    margin-top: 13vw
+  }
+}
