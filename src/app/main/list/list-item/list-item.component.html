@@ -1,3 +1,12 @@
-<p>
-  list-item works!
-</p>
+<div style="display: flex">
+    <span class="icon list-item-box-margin">
+      <i class="fas fa-circle"></i>
+    </span>
+    <p class="list-item-box-margin"> {{location.name}} </p>
+    <div *ngIf="location.reported">
+      <span class="tag is-danger is-small list-item-box-margin">
+        {{location.reported}} problems reported
+        <button class="delete"></button>
+      </span>
+    </div>
+  </div>

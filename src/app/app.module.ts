@@ -18,6 +18,7 @@ import { MedalsListComponent } from './main/community/medals-list/medals-list.co
 import { MapComponent } from './main/map/map.component';
 import { HeaderComponent } from './header/header.component';
 import { LocationsService } from './locations.service';
+import { MedalComponent } from './main/community/medals-list/medal/medal.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LocationsService } from './locations.service';
     FavoriteItemComponent,
     MedalsListComponent,
     MapComponent,
-    HeaderComponent
+    HeaderComponent,
+    MedalComponent
   ],
   imports: [
     BrowserModule,
