@@ -17,6 +17,7 @@ import { FormInformationComponent } from './reporting/form-information/form-info
 //  map
 //  community
 
+
 const routes: Routes = [
   { path: 'home',
     component: MainComponent,

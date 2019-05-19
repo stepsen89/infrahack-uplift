@@ -12,13 +12,8 @@ export class FeedbackService {
     private httpClient: HttpClient
   ) { }
 
-  public getLocations(url?: string) {
-    return locationJSON;
-    this.httpClient.get(`${apiUrl}`)
-      .subscribe((res) => {
-        return res;
-      });
+  public sendReport(report: any, url?: string) {
+    console.log(report);
+    return null;
   }
 }
-
-

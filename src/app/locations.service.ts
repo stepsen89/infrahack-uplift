@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { locationJSON } from '../assets/raw.js';
 import { HttpClient } from '@angular/common/http';
 
+
 const apiUrl = 'http://0.0.0.0:8000/api/all';
 
 @Injectable({
@@ -14,10 +15,11 @@ export class LocationsService {
   ) { }
 
   public getLocations(url?: string) {
-    return locationJSON;
+    // return locationJSON;
 
     this.httpClient.get(`${apiUrl}`)
       .subscribe((res) => {
+        // this.router.navigate(['/heroes']);
         return res;
       });
   }
