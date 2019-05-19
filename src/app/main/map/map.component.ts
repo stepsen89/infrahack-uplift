@@ -34,21 +34,27 @@ layersControl: any;
 // Values to bind to Leaflet Directive
 layers: Layer[];
 
+private locationsObservable : Observable<any[]> ;
+
 options = {
   zoom: 11,
   center: latLng(51.5074, 0.1278)
 };
 
 constructor(private locationsService: LocationsService) {
-  this.apply();
+	this.locationsService.getLocations().subscribe((res : any[])=>{
+		console.log(res);
+		this.locations = res;
+		this.apply();
+	});
+	
 }
 
 apply() {
   const array = [];
 
-  this.locations = this.locationsService.getLocations();
-
   this.locations.forEach(element => {
+		console.log(element);
     let s_color;
     if (element.faulty_lifts > 0) {
     s_color = 'red';
