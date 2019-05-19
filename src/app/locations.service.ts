@@ -14,10 +14,12 @@ export class LocationsService {
   ) { }
 
   public getLocations(url?: string) {
+    console.log(locationJSON);
     return locationJSON;
 
     this.httpClient.get(`${apiUrl}`)
       .subscribe((res) => {
+        console.log(res);
         return res;
       });
   }
