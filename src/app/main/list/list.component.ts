@@ -2,8 +2,8 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { LocationsService } from 'src/app/locations.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
-const apiUrl = 'http://0.0.0.0:8000/api/all';
 
 @Component({
   selector: 'app-list',
@@ -14,15 +14,25 @@ export class ListComponent implements OnInit {
   locations: any;
   counter: number;
 
+  private locationsObservable : Observable<any[]> ;
+
+
   constructor(
     private cdr: ChangeDetectorRef,
+
     private locationsService: LocationsService,
     private router: Router
-  ) { }
+  ) { 
+    this.locationsService.getLocations().subscribe((res : any[])=>{
+      console.log(res);
+      this.locations = res;
+  });
+  }
 
   ngOnInit() {
-      console.log("jljkl");
-      this.locations = this.locationsService.getLocations();
-      console.log(this.locations, "rendered");
+      console.log("I am called");
+      console.log("rendered");
+      console.log(this.locations);
   }
+
 }
