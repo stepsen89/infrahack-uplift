@@ -54,7 +54,6 @@ apply() {
   const array = [];
 
   this.locations.forEach(element => {
-		console.log(element);
     let s_color;
     if (element.faulty_lifts > 0) {
     s_color = 'red';
