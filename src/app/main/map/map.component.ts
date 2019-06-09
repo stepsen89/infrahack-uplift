@@ -4,13 +4,17 @@ import { Component, OnInit } from '@angular/core';
 import { latLng, LatLng, tileLayer, Layer, marker, circle, polygon, icon, geoJSON,  } from 'leaflet';
 import { LocationsService } from 'src/app/locations.service';
 import { LeafletLayersDemoModel } from './map.component.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
+
 export class MapComponent {
+	deviceLocation: any = [];;
+
   locations: any;
   model: any;
   LAYER_OSM = {
@@ -37,24 +41,47 @@ layers: Layer[];
 private locationsObservable : Observable<any[]> ;
 
 options = {
-  zoom: 11,
+  zoom: 35,
   center: latLng(51.5074, 0.1278)
 };
 
 constructor(private locationsService: LocationsService) {
 	this.locationsService.getLocations().subscribe((res : any[])=>{
-		console.log(res);
 		this.locations = res;
+		// this.locationDetection();
 		this.apply();
 	});
 	
 }
 
+// locationDetection() {
+// 	let deviceLocation = [];
+// 	if(navigator.geolocation){
+// 		navigator.geolocation.getCurrentPosition(displayLocationInfo);
+// 		console.log(deviceLocation);
+// 		this.options.center = latLng(42.111, 11.8989);
+// 		this.options.center = latLng(deviceLocation[1], deviceLocation[0]);
+// 		console.log(this.options.center)
+// 	}
+
+// 	function displayLocationInfo(position) {
+// 		const lng = position.coords.longitude;
+// 		const lat = position.coords.latitude;
+// 		deviceLocation.push(lng, lat);
+// 		console.log(deviceLocation);
+
+// 		console.log(deviceLocation)
+	
+// 		console.log(`longitude: ${ lng } | latitude: ${ lat }`);
+// 	}
+// }
+
 apply() {
+	console.log(this.options);
+
   const array = [];
 
   this.locations.forEach(element => {
-		console.log(element);
     let s_color;
     if (element.faulty_lifts > 0) {
     s_color = 'red';
@@ -63,8 +90,6 @@ apply() {
       }
 
     let popup = '<b>' + element.name + '</b><br>' + element.working_lifts + ' out of ' + element.total_lifts + ' lifts are working';
-
-    console.log(element.incidents);
 
   const obj = circle([ element.lat, element.lng ], { radius: 500, color: s_color});
   obj.bindPopup(popup);
