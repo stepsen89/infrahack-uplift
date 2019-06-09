@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { LocationsService } from 'src/app/locations.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -18,11 +18,9 @@ export class ListComponent implements OnInit {
 
 
   constructor(
-    private cdr: ChangeDetectorRef,
-
     private locationsService: LocationsService,
     private router: Router
-  ) { 
+  ) {
     this.locationsService.getLocations().subscribe((res : any[])=>{
       // console.log(res);
       this.locations = res;

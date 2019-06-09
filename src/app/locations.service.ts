@@ -27,6 +27,5 @@ export class LocationsService {
   getLocations() {
     return this.http.get(this.apiUrl);
   }
-
 }
 

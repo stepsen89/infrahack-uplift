@@ -91,6 +91,15 @@ apply() {
 
     let popup = '<b>' + element.name + '</b><br>' + element.working_lifts + ' out of ' + element.total_lifts + ' lifts are working';
 
+    if (element.fixed_aprox != null) {
+      console.log(element.name + ' ' + element.fixed_aprox);
+      if (element.fixed_aprox > 0) {
+        popup += '<br> Based on average repair times, next lift will be fixed in ' + element.fixed_aprox + ' hours';
+      } else {
+        popup += '<br> Next lift should be fixed in: tba.';
+      }
+    }
+
   const obj = circle([ element.lat, element.lng ], { radius: 500, color: s_color});
   obj.bindPopup(popup);
 
