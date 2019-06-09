@@ -24,6 +24,7 @@ import { ReportingComponent } from './reporting/reporting.component';
 import { FormIncidenceComponent } from './reporting/form-incidence/form-incidence.component';
 import { FormInformationComponent } from './reporting/form-information/form-information.component';
 import { SplashscreenComponent } from './splashscreen/splashscreen.component';
+import { StepsButtonComponent } from './support/steps-button/steps-button.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { SplashscreenComponent } from './splashscreen/splashscreen.component';
     ReportingComponent,
     FormIncidenceComponent,
     FormInformationComponent,
-    SplashscreenComponent
+    SplashscreenComponent,
+    StepsButtonComponent
   ],
   imports: [
     BrowserModule,
