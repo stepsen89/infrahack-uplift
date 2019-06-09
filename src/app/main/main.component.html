@@ -1,9 +1,14 @@
-<div class="tabs is-centered">
-  <ul style="background-color:white">
-    <li><a routerLink="list"> ABC </a></li>
-    <li><a routerLink="map"> MAP </a></li>
-    <li><a routerLink="community"> COMMUNITY </a></li>
-  </ul>
-</div>
+<section class="section-header">
+  <app-header></app-header>
+</section>
 
-<router-outlet></router-outlet>
+<section class="section-bottom">
+  <div class="tabs is-centered">
+    <ul style="background-color:white">
+      <li><a routerLink="list"> ABC </a></li>
+      <li><a routerLink="map"> MAP </a></li>
+      <li><a routerLink="community"> COMMUNITY </a></li>
+    </ul>
+  </div>
+  <router-outlet></router-outlet>
+</section>
