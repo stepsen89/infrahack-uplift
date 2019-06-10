@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LocationsService {
   // apiUrl: string = 'http://0.0.0.0:8000/api/all';
-  apiUrl: string = 'http://192.168.8.104:8000/api/all';
+  apiUrl: string = 'http://localhost:8000/api/all';
 
 
   constructor(
