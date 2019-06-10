@@ -41,7 +41,7 @@ layers: Layer[];
 private locationsObservable : Observable<any[]> ;
 
 options = {
-  zoom: 35,
+  zoom: 10,
   center: latLng(51.5074, 0.1278)
 };
 
