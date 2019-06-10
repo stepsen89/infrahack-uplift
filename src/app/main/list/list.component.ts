@@ -22,7 +22,7 @@ export class ListComponent implements OnInit {
     private router: Router
   ) {
     this.locationsService.getLocations().subscribe((res : any[])=>{
-      console.log(res);
+      // console.log(res);
       this.locations = res;
   });
   }
@@ -30,7 +30,7 @@ export class ListComponent implements OnInit {
   ngOnInit() {
       console.log("I am called");
       console.log("rendered");
-      console.log(this.locations);
+      // console.log(this.locations);
   }
 
 }
