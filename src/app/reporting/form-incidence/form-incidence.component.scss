@@ -9,13 +9,24 @@ app-form-incidence {
 }
 
 .has-content-centered {
-  padding-top: 50%;
+  padding-top: 40%;
 }
 
 .button-box-form {
   height: auto;
   border-radius:10%;
-  
+  background-color: white;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+
+  &--image {
+    margin: auto;
+  }
+}
+
+.button-box-form:hover {
+  background-color:black;
+  border: 3px solid black;
 }
 
 .has-padding-gap {

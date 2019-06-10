@@ -24,13 +24,14 @@ export class ListComponent implements OnInit {
     this.locationsService.getLocations().subscribe((res : any[])=>{
       // console.log(res);
       this.locations = res;
+      console.log(res);
   });
   }
 
-  ngOnInit() {
-      console.log("I am called");
-      console.log("rendered");
-      // console.log(this.locations);
-  }
+  // ngOnInit() {
+  //     console.log("I am called");
+  //     console.log("rendered");
+  //     // console.log(this.locations);
+  // }
 
 }

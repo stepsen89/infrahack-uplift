@@ -6,32 +6,32 @@
       </div>
     </div>
     <div class="columns is-mobile is-centered has-padding-gap">
-      <div class="column is-5 has-background-white button-box-form">
-        <figure class="image is-64x64">
+      <a class="column is-5 button-box-form has-text-centered" (click)=test($event)>
+        <figure class="image is-64x64 button-box-form--image is-centered">
           <img src="../../../assets/images/Not Available.png">
         </figure>
-        <h3 class="subtitle"> Not Available </h3>
-      </div>
-      <div class="column is-5 has-background-white button-box-form">
-          <figure class="image is-64x64 is-centered">
+        <span> {{buttonValues[0]}} </span>
+      </a>
+      <a class="column is-5 button-box-form has-text-centered" (click)=test($event)>
+          <figure class="image is-64x64 button-box-form--image is-centered">
             <img src="../../../assets/images/Dirty Lift.png">
           </figure>
-          <h3 class="subtitle"> Dirty </h3>
-      </div>
+          <span> {{buttonValues[1]}} </span>
+        </a>
     </div>
     <div class="columns is-mobile is-centered has-padding-gap">
-      <div class="column is-5 has-background-white button-box-form">
-          <figure class="image is-64x64">
+      <a class="column is-5 button-box-form has-text-centered" (click)=test($event)>
+          <figure class="image is-64x64 button-box-form--image">
               <img src="../../../assets/images/Bumpy Ride (1).png">
             </figure>
-            <h3 class="subtitle"> Bumpy Ride </h3>
-      </div>
-      <div class="column is-5 has-background-white button-box-form">
-          <figure class="image is-64x64">
+            <span> {{buttonValues[2]}} </span>
+          </a>
+      <a class="column is-5 button-box-form has-text-centered" (click)=test($event)>
+          <figure class="image is-64x64 button-box-form--image">
               <img src="../../../assets/images/Misuse.png">
             </figure>
-            <h3 class="subtitle"> Damage and Vandalism </h3>
-      </div>
+            <span> {{buttonValues[3]}} </span>
+          </a>
     </div>
   </div>
 

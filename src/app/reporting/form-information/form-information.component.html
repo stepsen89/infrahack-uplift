@@ -21,15 +21,14 @@
           <p class="title is-6"> All Stations: </p>
         </div>
       </div>
-      <div class="columns is-mobile">
-        <div class="column is-10 is-offset-1 has-background-white">
+      <div class="columns is-mobile" *ngFor="let station of stations">
+        <div class="column is-10 is-offset-1 has-background-white" (click)=click(station)>
             <label class="checkbox">
                 <input type="checkbox">
-                Station
+                {{station.name}}
           </label>
         </div>
       </div>
-    </div>
-  
-    <app-steps-button buttonTitle="Submit" style="margin-top: 15%"></app-steps-button>
+    </div>  
+    <app-steps-button buttonTitle="Submit" (click)=sendReport() style="margin-top: 15%"></app-steps-button>
   </section>

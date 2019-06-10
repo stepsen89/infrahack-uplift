@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, AfterContentInit } from '@angular/core';
+import { FeedbackService } from 'src/app/feedback.service';
 
 @Component({
   selector: 'app-steps-button',
@@ -7,9 +8,12 @@ import { Component, OnInit, Input, AfterContentInit } from '@angular/core';
 })
 export class StepsButtonComponent implements OnInit, AfterContentInit {
   @Input() buttonTitle: string;
+
   link: string;
 
-  constructor() { }
+  constructor(
+    private feedbackService: FeedbackService
+  ) { }
 
   ngOnInit() {
     console.log(this.buttonTitle);
@@ -22,5 +26,10 @@ export class StepsButtonComponent implements OnInit, AfterContentInit {
 
   ngAfterContentInit() {
     console.log(this.buttonTitle)
+  }
+
+  sendReport(id: string){
+    console.log(id);
+    this.feedbackService.sendReport(id);
   }
 }
