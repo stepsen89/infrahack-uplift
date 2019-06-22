@@ -89,12 +89,12 @@ apply() {
         s_color = 'green';
       }
 
-    let popup = '<b>' + element.name + '</b><br>' + element.working_lifts + ' out of ' + element.total_lifts + ' lifts are working';
+    let popup = '<b>' + element.name + '</b><br>' + element.working_lifts + ' out of ' + element.total_lifts + ' lifts are working' + '</b><br>' + element.incidents.length + ' user reports within the last hour';
 
     if (element.fixed_aprox != null) {
       console.log(element.name + ' ' + element.fixed_aprox);
       if (element.fixed_aprox > 0) {
-        popup += '<br> Based on average repair times, next lift will be fixed in ' + element.fixed_aprox + ' hours';
+        popup += '<br> Averaged repair time: ' + element.fixed_aprox + ' hours';
       } else {
         popup += '<br> Next lift should be fixed in: tba.';
       }

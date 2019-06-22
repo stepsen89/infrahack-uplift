@@ -27,11 +27,4 @@ export class ListComponent implements OnInit {
       console.log(res);
   });
   }
-
-  // ngOnInit() {
-  //     console.log("I am called");
-  //     console.log("rendered");
-  //     // console.log(this.locations);
-  // }
-
 }
