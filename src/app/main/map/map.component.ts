@@ -38,7 +38,7 @@ layersControl: any;
 // Values to bind to Leaflet Directive
 layers: Layer[];
 
-private locationsObservable : Observable<any[]> ;
+// private locationsObservable : Observable<any[]> ;
 
 options = {
   zoom: 10,

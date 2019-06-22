@@ -25,6 +25,8 @@ import { FormIncidenceComponent } from './reporting/form-incidence/form-incidenc
 import { FormInformationComponent } from './reporting/form-information/form-information.component';
 import { SplashscreenComponent } from './splashscreen/splashscreen.component';
 import { StepsButtonComponent } from './support/steps-button/steps-button.component';
+// apollo graphql
+import { GraphQLModule } from './graphql.module';
 
 
 @NgModule({
@@ -52,7 +54,8 @@ import { StepsButtonComponent } from './support/steps-button/steps-button.compon
     BrowserModule,
     AppRoutingModule,
     LeafletModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    GraphQLModule
   ],
   providers: [
     LocationsService
