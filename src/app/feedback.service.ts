@@ -1,34 +1,38 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { send } from 'q';
+import {Injectable} from '@angular/core';
+import {Apollo} from 'apollo-angular';
+import gql from 'graphql-tag';
 
-const apiUrl = "http://uplift.glitch.me/api/send";
+const mutationString = gql`
+      mutation insertIncident($id: String!, $user: String, $incidentType: String){
+        insertIncident(id: $id, user: $user, incidentType: $incidentType) {
+          ok
+        }
+  }`;
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class FeedbackService {
-  report: any;
 
   constructor(
-    private httpClient: HttpClient
-  ) { }
+    private apollo: Apollo
+  ) {}
 
   public sendReport(id: string) {
-    // const data = {
-    //   incident_type: 1,
-    //   station: "5cdf34c0a939ca8d40d5ec54"
-    // }
-    const data = {
-      incident_type: 1,
-      station: id
-    }
-    console.log(data);
-    return this.httpClient.post(apiUrl, data)
-    // incident_type=1&station=5cdf34c0a939ca8d40d5ec54
-    this.report = {
-      issue: 0,
-      station: 0
-    }
+
+    this.apollo.mutate({
+      mutation: mutationString,
+      variables: {
+        id: id,
+        user: 'testuser',
+        incidentType: 'testIncident'
+      }
+    }).subscribe(data => {
+      console.log('got data', data);
+    },(error) => {
+      console.log('there was an error sending the query', error);
+    });
+
   }
 }

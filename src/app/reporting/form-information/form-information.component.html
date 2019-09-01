@@ -1,8 +1,8 @@
 <section class="is-fullscreen-height-and-width">
     <div class="has-content-centered">
       <div class="columns">
-        <div class="column has-text-centered"> 
-          <h3 class="title is-4">Where is this lift?</h3> 
+        <div class="column has-text-centered">
+          <h3 class="title is-4">Where is this lift?</h3>
         </div>
       </div>
       <div class="columns is-mobile">
@@ -21,14 +21,16 @@
           <p class="title is-6"> All Stations: </p>
         </div>
       </div>
-      <div class="columns is-mobile" *ngFor="let station of stations">
-        <div class="column is-10 is-offset-1 has-background-white" (click)=click(station)>
+      <div *ngIf="locations" class="myBox">
+      <div  class="columns is-mobile" *ngFor="let location of locations.stations.edges">
+        <div class="column is-10 is-offset-1 has-background-white" (click)=click(location.node)>
             <label class="checkbox">
                 <input type="checkbox">
-                {{station.name}}
+                {{location.node.name}}
           </label>
         </div>
       </div>
-    </div>  
-    <app-steps-button buttonTitle="Submit" (click)=sendReport(stationId) style="margin-top: 15%"></app-steps-button>
+      </div>
+    </div>
+    <app-steps-button buttonTitle="Submit" (click)=feedbackService.sendReport(selectedStation) style="margin-top: 15%"></app-steps-button>
   </section>

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FeedbackService } from 'src/app/feedback.service';
-import { LocationsService } from 'src/app/locations.service';
+import {Component, OnInit} from '@angular/core';
+import {FeedbackService} from 'src/app/feedback.service';
+import {LocationsService} from 'src/app/locations.service';
 
 @Component({
   selector: 'app-form-information',
@@ -8,25 +8,24 @@ import { LocationsService } from 'src/app/locations.service';
   styleUrls: ['./form-information.component.scss']
 })
 export class FormInformationComponent implements OnInit {
-  stations: any;
+  locations: any;
   selectedStation: string;
 
   constructor(
-    public locationService: LocationsService
-  ) { 
-    this.locationService.getLocations().subscribe((res: any[])=>{
-      this.stations = res;
+    public locationService: LocationsService,
+    public feedbackService: FeedbackService
+  ) {
+    locationService.getLocations().subscribe(result => {
+      this.locations = result.data;
     });
   }
 
   ngOnInit() {
-    // this.stations = this.locationService.getLocations();
-    console.log(this.stations);
   }
 
   click(station: any) {
-    console.log(station._id);
-    this.selectedStation = station._id;
+    console.log(station.id);
+    this.selectedStation = station.id;
   }
 
   // constructor(

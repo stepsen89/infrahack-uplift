@@ -1,6 +1,4 @@
 import {Injectable} from '@angular/core';
-import {locationJSON} from '../assets/raw.js';
-import {HttpClient} from '@angular/common/http';
 
 import {Apollo, QueryRef} from 'apollo-angular';
 import gql from 'graphql-tag';
@@ -12,7 +10,6 @@ export class LocationsService {
   private query: QueryRef<any>;
 
   constructor(
-    private http: HttpClient,
     private apollo: Apollo
   ) {
   }
