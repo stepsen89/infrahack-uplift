@@ -75,10 +75,10 @@ export class MapComponent {
 // }
 
   apply() {
-    console.log(this.options);
 
     const array = [];
     this.locations.stations.edges.forEach(element => {
+      element = element.node;
       let s_color;
       if (element.faults.length > 0) {
         s_color = 'red';
@@ -86,15 +86,12 @@ export class MapComponent {
         s_color = 'green';
       }
 
-      let popup = '<b>' + element.name + '</b><br>' + (element.lifts.length - elements.faults.length) + ' out of ' + element.lifts.length + ' lifts are working' + '</b><br>' + element.incidents.length + ' user reports within the last hour';
+      let popup = '<b>' + element.name + '</b><br>' + (element.lifts.length - element.faults.length) + ' out of ' + element.lifts.length + ' lifts are working' + '</b><br>' + element.incidents.edges.length + ' user reports within the last hour'
 
-      if (element.fixed_aprox != null) {
-        console.log(element.name + ' ' + element.fixed_aprox);
-        if (element.fixed_aprox > 0) {
-          popup += '<br> Averaged repair time: ' + element.fixed_aprox + ' hours';
-        } else {
-          popup += '<br> Next lift should be fixed in: tba.';
-        }
+      if (element.avgRepair != null && element.faults.length > 0) {
+
+        popup += '<br> Averaged repair time: ' + (element.avgRepair / 3600).toFixed(1) + ' hours';
+
       }
 
       const obj = circle([element.lat, element.lng], {radius: 500, color: s_color});

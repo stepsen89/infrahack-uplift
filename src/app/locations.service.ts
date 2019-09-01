@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { locationJSON } from '../assets/raw.js';
-import { HttpClient } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {locationJSON} from '../assets/raw.js';
+import {HttpClient} from '@angular/common/http';
 
-import { Apollo, QueryRef } from 'apollo-angular';
+import {Apollo, QueryRef} from 'apollo-angular';
 import gql from 'graphql-tag';
 
 @Injectable({
@@ -14,11 +14,12 @@ export class LocationsService {
   constructor(
     private http: HttpClient,
     private apollo: Apollo
-  ) { }
+  ) {
+  }
 
   private queryString = gql`
       {
-        stations {
+        stations (aggregation: "{\\"$match\\": {\\"$and\\": [{\\"lng\\": {\\"$ne\\": null}}, {\\"lat\\": {\\"$ne\\": null}}]}}") {
           edges {
             node {
               id
@@ -27,6 +28,15 @@ export class LocationsService {
               lat
               faults
               lifts
+              avgRepair
+              incidents {
+                edges {
+                  node {
+                    incidentType
+                    user
+                  }
+                }
+            }
             }
           }
         }
@@ -40,22 +50,6 @@ export class LocationsService {
     });
 
     return this.query.valueChanges;
-  }
-
-  getFaultyOnes(){
-    const FAULTY_STATION_QUERY = gql`{
-      faultyStations {
-          id
-          name
-          lng
-          lat
-      }
-    }`
-
-    this.query = this.apollo.watchQuery({
-      query: FAULTY_STATION_QUERY,
-      variables: {}
-    });
   }
 
 }
