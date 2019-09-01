@@ -26,23 +26,23 @@
         <div class="column is-10 is-offset-1 has-background-white" (click)=click(location.node)>
             <label class="checkbox">
                 <input type="checkbox">
-                {{location.stations.edges[0].node.name}}
+                Angel Station
           </label>
         </div>
         <div class="column is-10 is-offset-1 has-background-white" (click)=click(location.node)>
           <label class="checkbox">
               <input type="checkbox">
-              {{location.stations.edges[1].node.name}}
+              Caledonian Road Station
         </label>
         </div>
           <div class="column is-10 is-offset-1 has-background-white" (click)=click(location.node)>
             <label class="checkbox">
                 <input type="checkbox">
-                {{location.stations.edges[2].node.name}}
+              Moorgate Station
           </label>
         </div>
       </div>
       </div>
     </div>
-    <app-steps-button buttonTitle="Submit" (click)=feedbackService.sendReport(selectedStation) style="margin-top: 15%"></app-steps-button>
+    <app-steps-button buttonTitle="Submit" style="margin-top: 15%"></app-steps-button>
   </section>
