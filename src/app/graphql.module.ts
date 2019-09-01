@@ -3,7 +3,7 @@ import {ApolloModule, APOLLO_OPTIONS} from 'apollo-angular';
 import {HttpLinkModule, HttpLink} from 'apollo-angular-link-http';
 import {InMemoryCache} from 'apollo-cache-inmemory';
 
-const uri = 'http://uplift.glitch.me/graphql';
+const uri = 'https://uplift.glitch.me/graphql';
 
 export function createApollo(httpLink: HttpLink) {
   return {
