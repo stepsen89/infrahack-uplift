@@ -6,7 +6,7 @@
     <button class="delete"></button>
 </span>
 
-  <div *ngFor="let edge of locations.allStations.edges" style="margin-right: 1rem; margin-top: 0.3rem">
+  <div *ngFor="let edge of locations.stations.edges" style="margin-right: 1rem; margin-top: 0.3rem">
       <app-list-item [location]="edge.node"></app-list-item>
   </div>
 

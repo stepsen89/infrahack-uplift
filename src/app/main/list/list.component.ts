@@ -29,12 +29,10 @@ export class ListComponent {
       variables: {}
     });
 
-    console.log('here');
-    console.log(this.locations);
 
-      this.query.valueChanges.subscribe(result => {
-        this.locations = result.data;
-        console.log(this.locations);
-      });
+    this.query.valueChanges.subscribe(result => {
+      this.locations = result.data;
+      console.log(this.locations);
+    });
   }
 }

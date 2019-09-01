@@ -1,13 +1,13 @@
 <div style="display: flex; margin-left: 1rem;
 margin-top: 0.3rem;">
     <span class="icon list-item-box-margin">
-      <i *ngIf="!location.faulty_lifts" class="fas fa-circle has-text-success"></i>
-      <i *ngIf="location.faulty_lifts" class="fas fa-circle has-text-warning"></i>
+      <i *ngIf="!location.faults.length > 0" class="fas fa-circle has-text-success"></i>
+      <i *ngIf="location.faults.length > 0" class="fas fa-circle has-text-warning"></i>
     </span>
     <p class="list-item-box-margin"> {{location.name}} </p>
-    <div *ngIf="location.faulty_lifts">
+    <div *ngIf="location.faults.length > 0">
       <span class="tag is-danger is-small list-item-box-margin">
-        {{location.faulty_lifts}} problems
+        {{location.faults.length}} problems
       </span>
     </div>
   </div>

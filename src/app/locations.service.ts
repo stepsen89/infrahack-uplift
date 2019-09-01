@@ -18,33 +18,22 @@ export class LocationsService {
     private apollo: Apollo
   ) { }
 
-  
+
   getLocations() {
-    const ALL_STATIONS = gql`
+    return gql`
       {
-        allStations {
+        stations {
           edges {
             node {
               id
               name
               lng
               lat
+              faults
             }
           }
         }
     }`;
-    console.log('all stations called');
-    console.log(ALL_STATIONS);
-
-    return ALL_STATIONS;
-
-    this.query = this.apollo.watchQuery({
-      query: ALL_STATIONS,
-      variables: {}
-    });
-
-    // return this.http.get(this.apiUrl);
-
   }
 
   getFaultyOnes(){
