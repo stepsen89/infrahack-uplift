@@ -19,7 +19,7 @@ export class StepsButtonComponent implements OnInit, AfterContentInit {
   ngOnInit() {
     console.log(this.buttonTitle);
     if(this.buttonTitle === "Submit"){
-      this.link = "/home/map";
+      this.link = "/home/community";
     } else {
       this.link = "/reporting/details"
     }
