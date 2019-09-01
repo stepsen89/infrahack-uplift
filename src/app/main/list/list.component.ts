@@ -12,27 +12,14 @@ import { QueryRef, Apollo } from 'apollo-angular';
 })
 export class ListComponent {
   locations: any;
-  counter: number;
-
-  private query: QueryRef<any>;
-
-  private locationsObservable : Observable<any[]> ;
 
   constructor(
-    private locationsService: LocationsService,
-    private router: Router,
-    private apollo: Apollo
+    private locationsService: LocationsService
   ) {
 
-    this.query = this.apollo.watchQuery({
-      query: this.locationsService.getLocations(),
-      variables: {}
-    });
-
-
-    this.query.valueChanges.subscribe(result => {
+    locationsService.getLocations().subscribe(result => {
       this.locations = result.data;
-      console.log(this.locations);
     });
+
   }
 }

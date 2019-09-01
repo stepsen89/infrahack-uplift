@@ -9,18 +9,14 @@ import gql from 'graphql-tag';
   providedIn: 'root'
 })
 export class LocationsService {
-  // apiUrl: string = 'http://0.0.0.0:8000/api/all';
-  //apiUrl: string = 'http://192.168.8.104:8000/api/all';
-  private query: QueryRef<any>
+  private query: QueryRef<any>;
 
   constructor(
     private http: HttpClient,
     private apollo: Apollo
   ) { }
 
-
-  getLocations() {
-    return gql`
+  private queryString = gql`
       {
         stations {
           edges {
@@ -30,10 +26,20 @@ export class LocationsService {
               lng
               lat
               faults
+              lifts
             }
           }
         }
     }`;
+
+  public getLocations() {
+
+    this.query = this.apollo.watchQuery({
+      query: this.queryString,
+      variables: {}
+    });
+
+    return this.query.valueChanges;
   }
 
   getFaultyOnes(){
