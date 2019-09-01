@@ -10,6 +10,7 @@ export class StepsButtonComponent implements OnInit, AfterContentInit {
   @Input() buttonTitle: string;
 
   link: string;
+  id: string;
 
   constructor(
     private feedbackService: FeedbackService
